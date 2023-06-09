@@ -1,0 +1,66 @@
+{% extends 'shopbase.html' %} {% block header %} {% load static %}
+
+
+<style>
+    #img{
+        height: 150px;
+        width: 150px;
+    }
+</style>
+    <div class="top-brands">
+        <div class="container">
+            <h3>Hot Deals</h3>
+            <div class="agile_top_brands_grids">
+                <a href="/myorders2">test</a>
+{% for i in datax %}
+
+                <div class="col-md-3 top_brand_left">
+
+                    <div class="hover14 column">
+                        <div class="agile_top_brand_left_grid">
+                            <!-- <div class="tag"><img src="{% static 'images/tag.png' %}" alt=" " class="img-responsive" /></div> -->
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+
+                                    <div class="snipcart-item block" >
+                                        <div class="snipcart-thumb">
+                                            <a href="single.html"><img title=" " id="img" alt=" " src="/static/media/{{i.image}}"/></a>		
+                                            <p>{{i.pdtname}}</p>
+                                            <h4>{{i.MRP}} <span>{{i.offerprice}}</span></h4>
+                                            <p>{{i.discription}}</p>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <form action="checkout.html" method="post" enctype="multipart/form-data">
+                                                <fieldset>
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="business" value=" " />
+                                                    <input type="hidden" name="item_name" value="Fortune Sunflower Oil" />
+                                                    <input type="hidden" name="amount" value="7.99" />
+                                                    <input type="hidden" name="discount_amount" value="1.00" />
+                                                    <input type="hidden" name="currency_code" value="USD" />
+                                                    <input type="hidden" name="return" value=" " />
+                                                    <input type="hidden" name="cancel_return" value=" " />
+                                                    <!-- <input type="submit" name="submit1" value="UPDATE" class="button" /><br><br> -->
+                                                    <!-- <input type="submit" name="submit2" value="DELETE" class="button" /> -->
+                                                    <a href="/updateproducts?d5={{i.id}}" class="btn btn-success">UPDATE</a>
+                                                    <a href="/deleteproduct?d5={{i.id}}" class="btn btn-danger">DELETE</a>
+                                                </fieldset>
+                                                    
+                                            </form>
+                                    
+                                        </div>
+                                    </div>
+
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endfor %}
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

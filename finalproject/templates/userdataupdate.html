@@ -1,0 +1,54 @@
+{% extends 'commonbase.html' %}
+{% block header %}
+{% load static %}
+
+<!-- login -->
+<div class="w3_login">
+    <h3>User Data Update</h3>
+    <div class="w3_login_module">
+        <div class="module form-module">
+          <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+            <div class="tooltip">Click Me</div>
+          </div>
+          <!-- <div class="form">
+            <h2>Login to your account</h2>
+            <form action="#" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+              <input type="email" name="Email" placeholder="Email" required=" ">
+              <input type="password" name="Password" placeholder="Password" required=" ">
+              <input type="submit" name="Login" value="Login">
+            </form>
+          </div> -->
+          <div class="form">
+            <h2>Update your data</h2>
+            <form action="#" method="post">
+                {% csrf_token %}
+              <input type="text" name="Username" value="{{userdata.username}}" placeholder="Username" required=" ">
+              <input type="password" name="Password" value="{{userdata.password}}" placeholder="Password" readonly=" " required=" ">
+              <input type="email" name="Email" placeholder="Email Address" value="{{userdata.email}}" readonly=" " required=" ">
+              <input type="text" name="Phone" placeholder="Phone Number" value="{{userdata.phone}}" required=" ">
+              <input type="text" name="Usertype" placeholder="Usertype" value="{{userdata.usertype}}"required=" " readonly=" ">
+              <input type="submit" name="Register" value="update">
+            </form>
+          </div>
+          <!-- <div class="cta"><a href="#">Forgot your password?</a></div> -->
+        </div>
+    </div>
+    <script>
+        $('.toggle').click(function(){
+          // Switches the Icon
+          $(this).children('i').toggleClass('fa-pencil');
+          // Switches the forms  
+          $('.form').animate({
+            height: "toggle",
+            'padding-top': 'toggle',
+            'padding-bottom': 'toggle',
+            opacity: "toggle"
+          }, "slow");
+        });
+    </script>
+</div>
+<!-- //login -->
+
+
+{% endblock %}

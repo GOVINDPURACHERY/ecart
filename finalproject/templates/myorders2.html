@@ -1,0 +1,30 @@
+{% extends 'shopbase.html' %}
+{% block header %}
+{% load static %}
+<h3>Orders of My Shop</h3><br>
+<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+            <th>PRODUCT ID</th>
+			<th>PRODUCT NAME</th>
+			<th>AMOUNT</th>
+			<th>USER ID</th>
+           
+            
+		</tr>
+	</thead>
+    
+	<tbody>
+        {% for i in orderlist %}
+		<tr>
+            <td>{{i.productid.id}}</td>
+			<td>{{i.pdtname}}</td>
+			<td>{{i.amount}}</td>
+			<td>{{i.userid.username}}</td>            
+		</tr>
+        {% endfor %}	
+	</tbody>
+    
+</table>
+
+{% endblock %}

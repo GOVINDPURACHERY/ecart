@@ -1,0 +1,79 @@
+{% extends 'adminbase.html' %}
+{% block header %}
+
+<h3>SHOP REGISTRATION DETAILS</h3>
+{% if data3 %}
+<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>SHOP NAME</th>
+			<th>OWNER NAME</th>
+            <th>PASSWORD</th>
+			<th>EMAIL</th>
+			<th>PHONE</th>
+			<th>USERTYPE</th>
+            <th>INDUSTRY</th>
+            <th>STATUS</th>
+            <th>ACTION 1</th>
+            <th>ACTION 2</th>
+		</tr>
+	</thead>
+    {% for i in data3 %}
+	<tbody>
+		<tr>
+			<td>{{i.shopname}}</td>
+            <td>{{i.ownername}}</td>
+			<td>{{i.password}}</td>
+			<td>{{i.email}}</td>
+			<td>{{i.phone}}</td>
+			<td>{{i.usertype}}</td>
+            <td>{{i.industry}}</td>
+            <td>{{i.status}}</td>
+            <td><a href="/adminapproval2?d2={{i.id}}&status=approved&email={{i.email}}">APPROVE</a></td>
+            <td><a href="/adminapproval2?d2={{i.id}}&status=delete&email={{i.email}}">DELETE</a></td>   
+		</tr>	
+	</tbody>
+    {% endfor %}
+</table>
+{% else %}
+<h3>No Data</h3>
+{% endif %}
+
+<h3>APPROVED SHOP DETAILS</h3>
+{% if data4 %}
+<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>SHOP NAME</th>
+			<th>OWNER NAME</th>
+            <th>PASSWORD</th>
+			<th>EMAIL</th>
+			<th>PHONE</th>
+			<th>USERTYPE</th>
+            <th>INDUSTRY</th>
+            <th>STATUS</th>
+            
+		</tr>
+	</thead>
+    {% for i in data4 %}
+	<tbody>
+		<tr>
+			<td>{{i.shopname}}</td>
+            <td>{{i.ownername}}</td>
+			<td>{{i.password}}</td>
+			<td>{{i.email}}</td>
+			<td>{{i.phone}}</td>
+			<td>{{i.usertype}}</td>
+            <td>{{i.industry}}</td>
+            <td>{{i.status}}</td>
+               
+		</tr>	
+	</tbody>
+    {% endfor %}
+</table>
+{% else %}
+<h3>No Data</h3>
+{% endif %}
+
+
+{% endblock %}
