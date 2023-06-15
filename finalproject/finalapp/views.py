@@ -107,8 +107,9 @@ def adminbase(request):
 
 def addproducts(request):
     # image=request.FILES['image']
-    shopid=request.session['shopid']#is first shop id is key
-    sid=shopreg.objects.get(id=shopid)#y not directly using shopid,instead of using sid,get method gives only particular value,not total row
+    shopid=request.session['shopid']
+    print(shopid)#is first shop id is key
+    sid=shopreg.objects.get(id=shopid)#???????????????????????????????????
     if request.POST:
         shopname=request.POST.get("shopname")
         image=request.FILES['image1']
@@ -116,7 +117,7 @@ def addproducts(request):
         MRP=request.POST.get('MRP')
         offerprice=request.POST.get('offerprice')
         discription=request.POST.get('discription')
-        pdtdatainsert=products.objects.create(shopname=shopname,image=image,pdtname=pdtname,MRP=MRP,offerprice=offerprice,discription=discription,shopid=sid)
+        pdtdatainsert=products.objects.create(shopname=shopname,image=image,pdtname=pdtname,MRP=MRP,offerprice=offerprice,discription=discription,shopid=sid)#???????????
         pdtdatainsert.save()    
     return render(request,"addproducts.html")
 
@@ -212,7 +213,7 @@ def myorders(request):
 
 
 def myorders2(request):
-    uid=request.session['userid']
+    uid=request.session['shopid']
     orderlist=cart.objects.filter(status="paid",userid=uid)
     return render(request,"myorders2.html",{"orderlist":orderlist}) 
 
